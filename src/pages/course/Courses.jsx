@@ -8,7 +8,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const fetchedCourses = async () => {
     try {
-      const response = await axios.get(`${baseUrl}api/v1/course/get-all`);
+      const response = await axios.get(`${baseUrl}/course/get-all`);
       setCourses(response.data.course);
     } catch (error) {
       console.log(error);
