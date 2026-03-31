@@ -2,6 +2,7 @@ import axios from "axios";
 import { useReducer, useEffect } from "react";
 import { createContext } from "react";
 import { baseUrl } from "../config/ApiRoutes";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -78,13 +79,14 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
     dispatch({ type: "logout" });
+    toast.info("Logged out");
   };
 
   useEffect(() => {
     if (!state.userInfo) {
       getMe();
     }
-  }, [state.userIfno]);
+  }, [state.userInfno]);
 
   return (
     <AuthContext.Provider value={{ state, loginUser, getMe, logout, dispatch }}>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../config/ApiRoutes";
+import { toast } from "react-toastify";
 
 const RegisterHooks = () => {
   const [userData, setUserData] = useState({
@@ -35,7 +36,7 @@ const RegisterHooks = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
+      toast.success("Registration successful ");
       console.log("USER DATA:", res.data);
       setUserData({
         name: "",
@@ -44,8 +45,7 @@ const RegisterHooks = () => {
         profile: null,
       });
     } catch (error) {
-      console.error(error);
-      console.error(error.response?.data);
+      toast.error(error.response?.data?.message || "Registration failed ");
     }
   };
 
