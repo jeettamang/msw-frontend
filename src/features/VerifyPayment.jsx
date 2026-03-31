@@ -1,6 +1,8 @@
 import axios from "axios";
 
-
+{
+  /*   */
+}
 const verifyPayment = async (paymentData) => {
   try {
     const response = await axios.post(
@@ -8,7 +10,7 @@ const verifyPayment = async (paymentData) => {
       paymentData,
       {
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
 
     console.log("Payment verification response:", response.data);
@@ -16,7 +18,7 @@ const verifyPayment = async (paymentData) => {
   } catch (error) {
     console.error(
       "Payment verification error:",
-      error.response?.data || error.message
+      error.response?.data || error.message,
     );
     throw error;
   }
