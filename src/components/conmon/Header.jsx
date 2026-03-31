@@ -132,13 +132,11 @@ const Header = () => {
           </NavLink>
 
           {user ? (
-            <>
+            <div className="mt-4">
               <button onClick={() => navigate("/user/dashboard")}>
                 Dashboard
               </button>
-              <button onClick={() => navigate("/user/profile")}>
-                Profile
-              </button>
+              <button onClick={() => navigate("/user/profile")}>Profile</button>
               <button
                 onClick={() => {
                   logout();
@@ -148,9 +146,9 @@ const Header = () => {
               >
                 Logout
               </button>
-            </>
+            </div>
           ) : (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 mt-4">
               <NavLink to="/register">Register</NavLink>
               <NavLink to="/login">Login</NavLink>
             </div>
