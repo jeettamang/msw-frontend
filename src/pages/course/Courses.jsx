@@ -48,7 +48,7 @@ const Courses = () => {
                 onClick={() => {
                   navigate(`/course-details/${course._id}`);
                 }}
-                className="mt-2 w-full hover:cursor-pointer bg-blue-500 hover:bg-blue-700 text-white md:px-4 rounded-md py-1"
+                className="mt-2 w-full hover:cursor-pointer bg-blue-500 hover:bg-blue-700 text-white md:px-4 rounded-md py-2"
               >
                 View
               </button>
