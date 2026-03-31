@@ -50,31 +50,29 @@ export default Success;
 }
 
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Success() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    console.log("Payment verification handled by backend redirect.");
-  }, [location]);
+    // The backend already marked the enrollment as 'paid'
+    // during the redirect to this page.
+    console.log("Payment confirmed by backend.");
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6">
-      <div className="bg-green-100 p-6 rounded-full">
-        <h1 className="text-6xl">🎉</h1>
-      </div>
-
-      <h1 className="text-4xl text-green-600 font-bold">Payment Successful!</h1>
-
-      <p className="text-gray-600 text-lg">
-        Your enrollment has been confirmed. You can now access your course.
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+      <div className="text-6xl mb-4">✅</div>
+      <h1 className="text-3xl text-green-600 font-bold mb-2">
+        Payment Successful!
+      </h1>
+      <p className="text-gray-600 mb-8">
+        Your course enrollment is now complete.
       </p>
-
       <button
         onClick={() => navigate("/user/dashboard")}
-        className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white text-xl font-semibold rounded-2xl shadow-lg transition-all"
+        className="px-10 py-3 bg-amber-500 hover:bg-amber-600 text-white text-xl font-semibold rounded-2xl shadow-md transition-all"
       >
         Go to Dashboard
       </button>
