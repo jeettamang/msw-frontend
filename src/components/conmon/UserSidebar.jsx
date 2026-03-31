@@ -13,7 +13,7 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* Overlay (mobile only) */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 md:hidden z-40"
+          className="fixed inset-0 bg-transparent md:hidden z-40"
           onClick={() => setSidebarOpen(false)}
         />
       )}
