@@ -69,7 +69,8 @@ function PaymentAPI() {
 
   const signature = CryptoJS.enc.Base64.stringify(hash);
 
-  return (
+  {
+    /*return (
     <div>
       <form
         className="bg-white flex shadow-2xl justify-center gap-y-10 items-center flex-col p-10 w-96 m-auto mt-20"
@@ -112,6 +113,54 @@ function PaymentAPI() {
 
         <h1 className="text-red-600 font-semibold text-5xl">Rs. {amount}</h1>
 
+        <input
+          className="text-2xl bg-orange-500 p-3 text-white rounded-sm w-32 cursor-pointer"
+          value="Pay"
+          type="submit"
+        />
+      </form>
+    </div>
+  );
+}
+  **/
+  }
+
+  return (
+    <div>
+      <form
+        className="bg-white flex shadow-2xl justify-center gap-y-10 items-center flex-col p-10 w-96 m-auto mt-20"
+        action="https://rc-epay.esewa.com.np/api/epay/main/v2/form"
+        method="POST"
+      >
+        {/* Hidden Fields */}
+        <input type="hidden" name="amount" value={amount} />
+        <input type="hidden" name="tax_amount" value="0" />
+        <input type="hidden" name="total_amount" value={amount} />
+        <input type="hidden" name="transaction_uuid" value={transaction_uuid} />
+        <input type="hidden" name="product_code" value="EPAYTEST" />
+        <input type="hidden" name="product_service_charge" value="0" />
+        <input type="hidden" name="product_delivery_charge" value="0" />
+
+        {/* LIVE URLs - Replace localhost with your Render/Vercel URLs */}
+        <input
+          type="hidden"
+          name="success_url"
+          value="https://msw-backend-pobv.onrender.com/api/v1/enrollment/verify-esewa"
+        />
+        <input
+          type="hidden"
+          name="failure_url"
+          value="https://msw-frontend.vercel.app/failure"
+        />
+
+        <input
+          type="hidden"
+          name="signed_field_names"
+          value="total_amount,transaction_uuid,product_code"
+        />
+        <input type="hidden" name="signature" value={signature} />
+
+        <h1 className="text-red-600 font-semibold text-5xl">Rs. {amount}</h1>
         <input
           className="text-2xl bg-orange-500 p-3 text-white rounded-sm w-32 cursor-pointer"
           value="Pay"
