@@ -28,7 +28,7 @@ const Courses = () => {
           {courses.map((course) => (
             <div
               key={course._id}
-              className="shadow-md rounded-2xl p-3 w-72 hover:shadow-xl"
+              className="shadow-md rounded-2xl p-3 md:w-72 hover:shadow-xl"
             >
               <img
                 src={course.image}
