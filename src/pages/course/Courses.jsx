@@ -33,7 +33,7 @@ const Courses = () => {
               <img
                 src={course.image}
                 alt={course.title}
-                className="w-full h-40 rounded-t-2xl"
+                className="w-full h-60 md:h-40 rounded-t-2xl"
               />
 
               <h2 className="text-lg font-semibold mt-2">{course.title}</h2>
@@ -48,7 +48,7 @@ const Courses = () => {
                 onClick={() => {
                   navigate(`/course-details/${course._id}`);
                 }}
-                className="mt-2 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded-md py-1"
+                className="mt-2 w-full hover:cursor-pointer bg-blue-500 hover:bg-blue-700 text-white md:px-4 rounded-md py-1"
               >
                 View
               </button>
