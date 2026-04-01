@@ -10,7 +10,6 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   return (
     <>
-      {/* Overlay (mobile) */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-transparent md:hidden z-40"
@@ -18,10 +17,9 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-full w-64 bg-white shadow-lg p-4 z-50
+          fixed top-0 left-0 h-full w-64 bg-white p-4 z-50
           transform transition-transform duration-300
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static md:block
@@ -37,7 +35,7 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 key={index}
                 to={item.path}
                 className={({ isActive }) => navLinkClass(isActive)}
-                onClick={() => setSidebarOpen(false)} // close on mobile
+                onClick={() => setSidebarOpen(false)}
               >
                 <Icon size={20} />
                 {item.label || item.name}
@@ -45,7 +43,6 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
             );
           })}
 
-          {/* Go Home */}
           <NavLink
             to="/"
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-200"

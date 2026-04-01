@@ -13,7 +13,7 @@ export const userMenu = [
   },
   {
     name: "Payment History",
-    path: "/user/payment",
+    path: "/user/payments",
     icon: CreditCard,
   },
   {
