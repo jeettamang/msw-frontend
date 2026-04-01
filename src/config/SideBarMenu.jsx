@@ -1,13 +1,8 @@
-import {
-  LayoutDashboard,
-  BookOpen,
-  CreditCard,
-  User,
-} from "lucide-react";
+import { LayoutDashboard, BookOpen, CreditCard, User } from "lucide-react";
 
-export const userMenu = () => [
+export const userMenu = [
   {
-    name: "dashboard",
+    name: "Dashboard",
     path: "/user/dashboard",
     icon: LayoutDashboard,
   },
@@ -26,7 +21,4 @@ export const userMenu = () => [
     path: "/user/profile",
     icon: User,
   },
-
 ];
-
-export default SideBarMenu;
