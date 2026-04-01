@@ -24,16 +24,16 @@ const LoginHooks = () => {
     e.preventDefault();
     try {
       const user = await loginUser(userData.email, userData.password);
-      setUserData({
-        email: "",
-        password: "",
-      });
-      toast.success("Login successful");
-      console.log("Returned user:", user);
+
       if (!user) {
-        alert("Invalid email or password");
+        toast.error("Invalid email or password");
         return;
       }
+
+      toast.success("Login successful");
+
+      setUserData({ email: "", password: "" });
+
       if (user.role === "Admin") {
         navigate("/admin");
       } else if (user.role === "Instructor") {
@@ -42,7 +42,7 @@ const LoginHooks = () => {
         navigate("/");
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed ");
+      toast.error(error.response?.data?.message || "Login failed");
     }
   };
   return { userData, handleChange, handleSubmit };

@@ -1,16 +1,13 @@
 import { NavLink } from "react-router-dom";
-import {
-  LayoutDashboard,
-  BookOpen,
-  CreditCard,
-  User,
-  Home,
-} from "lucide-react";
-
+import { Home } from "lucide-react";
+import { userMenu } from "../../config/SideBarMenu";
 const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const navLinkClass = (isActive) =>
+    `flex items-center gap-2 p-2 rounded ${
+      isActive ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+    }`;
   return (
     <>
-      {/* Overlay (mobile only) */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-transparent md:hidden z-40"
@@ -29,50 +26,16 @@ const UserSidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <h2 className="text-xl font-bold mb-6">User Panel</h2>
 
         <nav className="flex flex-col gap-3">
-          <NavLink
-            to="/user/dashboard"
-            className={({ isActive }) =>
-              `flex items-center gap-2 p-2 rounded ${
-                isActive ? "bg-blue-500 text-white" : "hover:bg-gray-200"
-              }`
-            }
-          >
-            <LayoutDashboard size={20} /> Dashboard
-          </NavLink>
-
-          <NavLink
-            to="/user/courses"
-            className={({ isActive }) =>
-              `flex items-center gap-2 p-2 rounded ${
-                isActive ? "bg-blue-500 text-white" : "hover:bg-gray-200"
-              }`
-            }
-          >
-            <BookOpen size={20} /> My Courses
-          </NavLink>
-
-          <NavLink
-            to="/user/payments"
-            className={({ isActive }) =>
-              `flex items-center gap-2 p-2 rounded ${
-                isActive ? "bg-blue-500 text-white" : "hover:bg-gray-200"
-              }`
-            }
-          >
-            <CreditCard size={20} /> Payments
-          </NavLink>
-
-          <NavLink
-            to="/user/profile"
-            className={({ isActive }) =>
-              `flex items-center gap-2 p-2 rounded ${
-                isActive ? "bg-blue-500 text-white" : "hover:bg-gray-200"
-              }`
-            }
-          >
-            <User size={20} /> Profile
-          </NavLink>
-
+          {userMenu.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={({ isA }) => navLinkClass(isActive)}
+              />
+            );
+          })}
           <NavLink
             to="/"
             className="flex items-center gap-2 p-2 rounded hover:bg-gray-200"
